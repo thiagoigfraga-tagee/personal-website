@@ -4,16 +4,26 @@
     <div class="min-h-screen bg-zinc-900 text-zinc-100">
         <div class="max-w-4xl mx-auto px-6 py-16 lg:py-24">
 
+            {{-- <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-4xl lg:text-5xl font-bold text-white mb-3">
+                    <span class="text-purple-500">//</span> Contato
+                </h1>
+                <p class="text-xl text-zinc-400 font-mono">
+                    Entre em contato comigo através das plataformas abaixo
+                </p>
+            </div> --}}
+
             <!-- Header -->
             <div class="mb-12">
-                <h1 class="text-4xl lg:text-3xl font-bold text-white mb-3">
+                <h1 class="text-4xl lg:text-5xl font-bold text-white mb-3">
                     @isset($tag)
                         Posts com tag: <span class="text-purple-500">#{{ $tag->name }}</span>
                     @else
                         <span class="text-purple-500">//</span> Blog
                     @endisset
                 </h1>
-                <p class="text-zinc-400 font-mono">
+                <p class="text-xl text-zinc-400 font-mono">
                     @isset($tag)
                         Mostrando todos os posts sobre {{ $tag->name }}
                     @else
