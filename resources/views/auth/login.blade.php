@@ -91,13 +91,6 @@
                 </div>
 
             </div>
-
-            <!-- Security Notice -->
-            <div class="mt-6 text-center text-xs text-zinc-600">
-                <p>Sistema protegido por rate limiting</p>
-                <p>Máximo de 5 tentativas por minuto</p>
-            </div>
-
         </div>
     </div>
 
