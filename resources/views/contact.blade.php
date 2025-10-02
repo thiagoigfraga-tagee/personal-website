@@ -1,4 +1,6 @@
 <x-layouts.public>
+    <x-slot:title>Contato - Thiago Fraga</x-slot:title>
+
     <div class="min-h-screen bg-zinc-900 text-zinc-100">
         <div class="max-w-4xl mx-auto px-6 py-16 lg:py-24">
 

@@ -14,12 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Criar usuário admin
-        User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-        ]);
-
+        // ⚠️ USUÁRIO ADMIN NÃO É CRIADO AUTOMATICAMENTE
+        // Para criar o admin, após o deploy execute:
+        // php artisan tinker
+        // User::create(['name' => 'Seu Nome', 'email' => 'seu@email.com', 'password' => bcrypt('SuaSenhaSegura123!')]);
+        
         // Criar algumas tags
         $tags = [
             Tag::create(['name' => 'Laravel', 'slug' => 'laravel']),

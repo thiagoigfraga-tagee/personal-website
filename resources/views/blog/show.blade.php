@@ -1,6 +1,15 @@
 <x-layouts.public>
+    <x-slot:title>{{ $post->title }} - Blog</x-slot:title>
+
     <div class="min-h-screen bg-zinc-900 text-zinc-100">
         <div class="max-w-4xl mx-auto px-6 py-16 lg:py-24">
+            <!-- Back to Blog -->
+            <div class="mt-12 ">
+                <a href="{{ route('blog.index') }}" wire:navigate
+                    class="inline-flex items-center text-purple-500 hover:text-purple-400 font-mono transition-colors">
+                    ← Ver todos os posts
+                </a>
+            </div>
 
             <!-- Article Header -->
             <article>
@@ -20,7 +29,7 @@
                 @if ($post->tags->count() > 0)
                     <div class="flex flex-wrap gap-2 mb-8">
                         @foreach ($post->tags as $tag)
-                            <a href="{{ route('blog.tag', $tag->slug) }}"
+                            <a href="{{ route('blog.tag', $tag->slug) }}" wire:navigate
                                 class="px-3 py-1 text-sm bg-zinc-800 border border-zinc-700 rounded text-purple-500 hover:border-purple-500 font-mono transition-colors">
                                 #{{ $tag->slug }}
                             </a>
@@ -46,8 +55,8 @@
                 <!-- Share Section -->
                 <div class="mt-16 pt-8 border-t border-zinc-800">
                     <div class="flex items-center justify-between">
-                        <span class="text-zinc-500 font-mono text-sm">Compartilhar:</span>
                         <div class="flex gap-3">
+
                             <!-- Twitter -->
                             <a href="https://twitter.com/intent/tweet?url={{ urlencode(route('blog.show', $post->slug)) }}&text={{ urlencode($post->title) }}"
                                 target="_blank" rel="noopener noreferrer"
@@ -67,37 +76,13 @@
                                         d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                                 </svg>
                             </a>
-
-                            <!-- Copy Link -->
-                            <button onclick="copyToClipboard('{{ route('blog.show', $post->slug) }}')"
-                                class="p-2 bg-zinc-800 border border-zinc-700 rounded hover:border-green-500 hover:text-green-400 transition-colors"
-                                title="Copiar link">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                                </svg>
-                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Back to Blog -->
-                <div class="mt-12 text-center">
-                    <a href="{{ route('blog.index') }}"
-                        class="inline-flex items-center text-green-500 hover:text-green-400 font-mono transition-colors">
-                        ← Ver todos os posts
-                    </a>
-                </div>
+
             </article>
 
         </div>
     </div>
-
-    <script>
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Link copiado!');
-            });
-        }
-    </script>
 </x-layouts.public>

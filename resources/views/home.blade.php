@@ -1,4 +1,6 @@
 <x-layouts.public>
+    <x-slot:title>Thiago Fraga - Full-Stack Web Developer</x-slot:title>
+
     <div class="min-h-screen bg-zinc-900 text-zinc-100">
         <!-- Container Principal -->
         <div class="max-w-4xl mx-auto px-6 py-16 lg:py-24">
@@ -257,7 +259,7 @@
                     </h2>
                     <div class="space-y-4">
                         @foreach ($featuredPosts as $post)
-                            <a href="{{ route('blog.show', $post->slug) }}"
+                            <a href="{{ route('blog.show', $post->slug) }}" wire:navigate
                                 class="block p-6 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-zinc-750 hover:border-zinc-600 transition-colors group">
                                 <h3
                                     class="text-xl font-semibold mb-2 text-white group-hover:text-purple-400 transition-colors">
@@ -280,8 +282,8 @@
                         @endforeach
                     </div>
                     <div class="mt-6">
-                        <a href="{{ route('blog.index') }}"
-                            class="inline-block text-purple-500 hover:text-green-400 font-mono transition-colors">
+                        <a href="{{ route('blog.index') }}" wire:navigate
+                            class="inline-block text-purple-500 hover:text-purple-400 font-mono transition-colors">
                             Ver todos os posts →
                         </a>
                     </div>

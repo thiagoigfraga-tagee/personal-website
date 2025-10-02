@@ -11,32 +11,25 @@
         <div class="max-w-4xl mx-auto px-6">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo/Nome -->
-                <a href="{{ route('home') }}"
+                <a href="{{ route('home') }}" wire:navigate
                     class="text-lg font-bold font-mono {{ request()->routeIs('home') ? 'text-purple-500' : 'text-zinc-300 hover:text-purple-400' }} transition-colors">
                     TF
                 </a>
 
                 <!-- Nav Links -->
                 <div class="flex items-center gap-6">
-                    <a href="{{ route('home') }}"
+                    <a href="{{ route('home') }}" wire:navigate
                         class="text-sm font-mono {{ request()->routeIs('home') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
                         Home
                     </a>
-                    <a href="{{ route('blog.index') }}"
+                    <a href="{{ route('blog.index') }}" wire:navigate
                         class="text-sm font-mono {{ request()->routeIs('blog.*') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
                         Blog
                     </a>
-                    <a href="{{ route('contact') }}"
+                    <a href="{{ route('contact') }}" wire:navigate
                         class="text-sm font-mono {{ request()->routeIs('contact') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
                         Contato
                     </a>
-
-                    @auth
-                        <a href="{{ route('profile.edit') }}"
-                            class="text-sm font-mono {{ request()->routeIs('profile.*') || request()->routeIs('settings.*') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
-                            Admin
-                        </a>
-                    @endauth
                 </div>
             </div>
         </div>
@@ -46,8 +39,6 @@
     <div class="min-h-screen">
         {{ $slot }}
     </div>
-
-    @fluxScripts
 </body>
 
 </html>

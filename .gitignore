@@ -9,6 +9,7 @@
 .env
 .env.backup
 .env.production
+.env.local
 .phpactor.json
 .phpunit.result.cache
 Homestead.json
@@ -21,3 +22,13 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# Arquivos de segurança
+create-admin.php
+*.sql
+*.sqlite
+database/database.sqlite
+
+# Logs e caches
+storage/logs/*.log
+bootstrap/cache/*.php

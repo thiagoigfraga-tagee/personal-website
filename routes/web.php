@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Fortify\Features;
-use Livewire\Volt\Volt;
 use App\Models\Post;
 
 Route::get('/', function () {
@@ -52,22 +50,36 @@ Route::get('/blog/tag/{slug}', function ($slug) {
 })->name('blog.tag');
 
 Route::middleware(['auth'])->group(function () {
-    Route::redirect('settings', 'settings/profile');
-
-    Volt::route('settings/profile', 'settings.profile')->name('profile.edit');
-    Volt::route('settings/password', 'settings.password')->name('password.edit');
-    Volt::route('settings/appearance', 'settings.appearance')->name('appearance.edit');
-
-    Volt::route('settings/two-factor', 'settings.two-factor')
-        ->middleware(
-            when(
-                Features::canManageTwoFactorAuthentication()
-                    && Features::optionEnabled(Features::twoFactorAuthentication(), 'confirmPassword'),
-                ['password.confirm'],
-                [],
-            ),
-        )
-        ->name('two-factor.show');
+    // Admin/Editor Routes
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/', function () {
+            $stats = [
+                'total_posts' => Post::count(),
+                'published_posts' => Post::whereNotNull('published_at')->count(),
+                'draft_posts' => Post::whereNull('published_at')->count(),
+                'total_tags' => \App\Models\Tag::count(),
+            ];
+            return view('admin.dashboard', compact('stats'));
+        })->name('dashboard');
+        
+        // Posts CRUD
+        Route::get('/posts', function () {
+            return view('admin.posts.index');
+        })->name('posts.index');
+        
+        Route::get('/posts/create', function () {
+            return view('admin.posts.create');
+        })->name('posts.create');
+        
+        Route::get('/posts/{post}/edit', function (\App\Models\Post $post) {
+            return view('admin.posts.edit', ['post' => $post]);
+        })->name('posts.edit');
+        
+        // Tags CRUD
+        Route::get('/tags', function () {
+            return view('admin.tags.index');
+        })->name('tags.index');
+    });
 });
 
 require __DIR__.'/auth.php';

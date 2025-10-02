@@ -1,4 +1,6 @@
 <x-layouts.public>
+    <x-slot:title>Blog - Thiago Fraga</x-slot:title>
+
     <div class="min-h-screen bg-zinc-900 text-zinc-100">
         <div class="max-w-4xl mx-auto px-6 py-16 lg:py-24">
 
@@ -25,7 +27,7 @@
                 <div class="space-y-8 mb-12">
                     @foreach ($posts as $post)
                         <article class="group">
-                            <a href="{{ route('blog.show', $post->slug) }}" class="block">
+                            <a href="{{ route('blog.show', $post->slug) }}" wire:navigate class="block">
                                 <div
                                     class="p-6 bg-zinc-800 border border-zinc-700 rounded-lg hover:bg-zinc-750 hover:border-purple-500 transition-all">
                                     <!-- Post Date -->
@@ -85,7 +87,7 @@
                                     ← Anterior
                                 </span>
                             @else
-                                <a href="{{ $posts->previousPageUrl() }}"
+                                <a href="{{ $posts->previousPageUrl() }}" wire:navigate
                                     class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-300 hover:border-purple-500 hover:text-purple-400 font-mono transition-colors">
                                     ← Anterior
                                 </a>
@@ -97,7 +99,7 @@
                             </span>
 
                             @if ($posts->hasMorePages())
-                                <a href="{{ $posts->nextPageUrl() }}"
+                                <a href="{{ $posts->nextPageUrl() }}" wire:navigate
                                     class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-300 hover:border-purple-500 hover:text-purple-400 font-mono transition-colors">
                                     Próxima →
                                 </a>
