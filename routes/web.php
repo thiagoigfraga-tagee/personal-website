@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+// Redirect root to localized route
+Route::get('/', function() {
+    return redirect(LaravelLocalization::getLocalizedURL());
+});
+
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
