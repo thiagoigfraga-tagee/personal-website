@@ -3,17 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
-// Redirect root to localized route
-Route::get('/', function() {
-    return redirect(LaravelLocalization::getLocalizedURL());
-});
-
-Route::group([
-    'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-], function() {
 
 Route::get('/', function () {
     $featuredPosts = Post::published()->featured()->take(3)->get();
@@ -92,7 +81,5 @@ Route::middleware(['auth'])->group(function () {
         })->name('tags.index');
     });
 });
-
-}); // Fim do grupo de localização
 
 require __DIR__.'/auth.php';
