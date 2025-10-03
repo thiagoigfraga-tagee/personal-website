@@ -7,10 +7,10 @@
             <!-- Header -->
             <div class="mb-8">
                 <h1 class="text-4xl lg:text-5xl font-bold text-white mb-3">
-                    <span class="text-purple-500">//</span> Contato
+                    <span class="text-purple-500">//</span> {{ __('messages.contact_page_title') }}
                 </h1>
                 <p class="text-xl text-zinc-400 font-mono">
-                    Entre em contato comigo através das plataformas abaixo
+                    {{ __('messages.contact_description') }}
                 </p>
             </div>
 
@@ -32,10 +32,10 @@
                                 Email
                             </h3>
                             <p class="text-zinc-400 mb-3">
-                                Me envie um email diretamente
+                                {{ __('messages.email_me') }}
                             </p>
                             <span class="text-purple-500 font-mono text-sm">
-                                Enviar email →
+                                {{ __('messages.send_email') }} →
                             </span>
                         </div>
                     </div>
@@ -56,10 +56,10 @@
                                 LinkedIn
                             </h3>
                             <p class="text-zinc-400 mb-3">
-                                Conecte-se comigo profissionalmente
+                                {{ __('messages.connect_professionally') }}
                             </p>
                             <span class="text-purple-500 font-mono text-sm">
-                                Ver perfil →
+                                {{ __('messages.view_profile') }} →
                             </span>
                         </div>
                     </div>
@@ -80,10 +80,10 @@
                                 GitHub
                             </h3>
                             <p class="text-zinc-400 mb-3">
-                                Confira meus projetos
+                                {{ __('messages.check_projects') }}
                             </p>
                             <span class="text-purple-500 font-mono text-sm">
-                                Ver repositórios →
+                                {{ __('messages.view_repositories') }} →
                             </span>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
             <div class="p-4">
                 <p class="text-zinc-400 leading-relaxed">
                     <span class="text-purple-500 font-mono">//</span>
-                    Estou sempre aberto a novas oportunidades e colaborações. Sinta-se à vontade para entrar em contato!
+                    {{ __('messages.open_opportunities') }}
                 </p>
             </div>
 

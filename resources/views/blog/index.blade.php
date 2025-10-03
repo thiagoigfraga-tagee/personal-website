@@ -18,16 +18,16 @@
             <div class="mb-12">
                 <h1 class="text-4xl lg:text-5xl font-bold text-white mb-3">
                     @isset($tag)
-                        Posts com tag: <span class="text-purple-500">#{{ $tag->name }}</span>
+                        {{ __('messages.posts_with_tag') }} <span class="text-purple-500">#{{ $tag->name }}</span>
                     @else
-                        <span class="text-purple-500">//</span> Blog
+                        <span class="text-purple-500">//</span> {{ __('messages.blog_title') }}
                     @endisset
                 </h1>
                 <p class="text-xl text-zinc-400 font-mono">
                     @isset($tag)
-                        Mostrando todos os posts sobre {{ $tag->name }}
+                        {{ __('messages.showing_posts_about') }} {{ $tag->name }}
                     @else
-                        Pensamentos, tutoriais e experiências sobre desenvolvimento
+                        {{ __('messages.blog_description') }}
                     @endisset
                 </p>
             </div>
@@ -74,7 +74,7 @@
                                     <!-- Read More -->
                                     <div
                                         class="mt-4 text-purple-500 group-hover:text-purple-400 font-mono text-sm flex items-center gap-2 transition-colors">
-                                        Ler mais
+                                        {{ __('messages.read_more') }}
                                         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform"
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -94,29 +94,30 @@
                             @if ($posts->onFirstPage())
                                 <span
                                     class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-600 font-mono cursor-not-allowed">
-                                    ← Anterior
+                                    ← {{ __('messages.previous') }}
                                 </span>
                             @else
                                 <a href="{{ $posts->previousPageUrl() }}" wire:navigate
                                     class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-300 hover:border-purple-500 hover:text-purple-400 font-mono transition-colors">
-                                    ← Anterior
+                                    ← {{ __('messages.previous') }}
                                 </a>
                             @endif
 
                             <span
                                 class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-400 font-mono">
-                                Página {{ $posts->currentPage() }} de {{ $posts->lastPage() }}
+                                {{ __('messages.page') }} {{ $posts->currentPage() }} {{ __('messages.of') }}
+                                {{ $posts->lastPage() }}
                             </span>
 
                             @if ($posts->hasMorePages())
                                 <a href="{{ $posts->nextPageUrl() }}" wire:navigate
                                     class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-300 hover:border-purple-500 hover:text-purple-400 font-mono transition-colors">
-                                    Próxima →
+                                    {{ __('messages.next') }} →
                                 </a>
                             @else
                                 <span
                                     class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-600 font-mono cursor-not-allowed">
-                                    Próxima →
+                                    {{ __('messages.next') }} →
                                 </span>
                             @endif
                         </div>
@@ -131,12 +132,12 @@
                                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-zinc-400 mb-2">Nenhum post encontrado</h3>
+                    <h3 class="text-xl font-bold text-zinc-400 mb-2">{{ __('messages.no_posts_found') }}</h3>
                     <p class="text-zinc-500 font-mono">
                         @isset($tag)
-                            Não há posts com essa tag ainda.
+                            {{ __('messages.no_posts_tag') }}
                         @else
-                            Em breve teremos conteúdo por aqui.
+                            {{ __('messages.coming_soon') }}
                         @endisset
                     </p>
                 </div>

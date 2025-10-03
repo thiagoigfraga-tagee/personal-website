@@ -15,8 +15,8 @@
 
             <!-- Logo/Header -->
             <div class="text-center mb-8">
-                <h1 class="text-4xl font-bold text-white mb-2">Admin Panel</h1>
-                <p class="text-zinc-400">Acesso restrito</p>
+                <h1 class="text-4xl font-bold text-white mb-2">{{ __('messages.admin_login_title') }}</h1>
+                <p class="text-zinc-400">{{ __('messages.restricted_access') }}</p>
             </div>
 
             <!-- Login Card -->
@@ -46,7 +46,7 @@
                     <!-- Email -->
                     <div>
                         <label for="email" class="block text-sm font-semibold text-zinc-300 mb-2">
-                            Email
+                            {{ __('messages.email') }}
                         </label>
                         <input type="email" id="email" name="email" value="{{ old('email') }}" required
                             autofocus autocomplete="username"
@@ -56,7 +56,7 @@
                     <!-- Password -->
                     <div>
                         <label for="password" class="block text-sm font-semibold text-zinc-300 mb-2">
-                            Senha
+                            {{ __('messages.password') }}
                         </label>
                         <input type="password" id="password" name="password" required autocomplete="current-password"
                             class="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-purple-500">
@@ -67,7 +67,7 @@
                         <input type="checkbox" id="remember" name="remember"
                             class="rounded bg-zinc-700 border-zinc-600 text-purple-600 focus:ring-purple-500 focus:ring-offset-zinc-900">
                         <label for="remember" class="ml-2 text-sm text-zinc-400">
-                            Lembrar de mim
+                            {{ __('messages.remember_me') }}
                         </label>
                     </div>
 
@@ -78,7 +78,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                         </svg>
-                        Entrar
+                        {{ __('messages.login_button') }}
                     </button>
                 </form>
 
@@ -86,7 +86,7 @@
                 <div class="mt-6 pt-6 border-t border-zinc-700 text-center">
                     <a href="{{ route('home') }}" wire:navigate
                         class="text-sm text-zinc-500 hover:text-purple-400 transition-colors">
-                        ← Voltar ao site
+                        ← {{ __('messages.back_to_site') }}
                     </a>
                 </div>
 

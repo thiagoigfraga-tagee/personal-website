@@ -7,7 +7,7 @@
             <div class="mt-12 ">
                 <a href="{{ route('blog.index') }}" wire:navigate
                     class="inline-flex items-center text-purple-500 hover:text-purple-400 font-mono transition-colors">
-                    ← Ver todos os posts
+                    ← {{ __('messages.see_all_posts') }}
                 </a>
             </div>
 
@@ -16,7 +16,11 @@
                 <!-- Post Meta -->
                 <div class="mb-6">
                     <time datetime="{{ $post->published_at->toIso8601String() }}" class="text-sm text-zinc-500 font-mono">
-                        {{ $post->published_at->translatedFormat('d \d\e F \d\e Y') }}
+                        @if(app()->getLocale() === 'pt-BR')
+                            {{ $post->published_at->translatedFormat('d \d\e F \d\e Y') }}
+                        @else
+                            {{ $post->published_at->translatedFormat('F d, Y') }}
+                        @endif
                     </time>
                 </div>
 

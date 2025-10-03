@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +25,10 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
+
+        // Configura locale do Carbon baseado no idioma da aplicação
+        $locale = app()->getLocale();
+        $carbonLocale = $locale === 'pt-BR' ? 'pt_BR' : 'en';
+        Carbon::setLocale($carbonLocale);
     }
 }

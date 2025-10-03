@@ -18,18 +18,29 @@
 
                 <!-- Nav Links -->
                 <div class="flex items-center gap-6">
-                    <a href="{{ route('home') }}" wire:navigate
+                    <a href="{{ LaravelLocalization::localizeUrl(route('home')) }}" wire:navigate
                         class="text-sm font-mono {{ request()->routeIs('home') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
-                        Home
+                        {{ __('messages.home') }}
                     </a>
-                    <a href="{{ route('blog.index') }}" wire:navigate
+                    <a href="{{ LaravelLocalization::localizeUrl(route('blog.index')) }}" wire:navigate
                         class="text-sm font-mono {{ request()->routeIs('blog.*') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
-                        Blog
+                        {{ __('messages.blog') }}
                     </a>
-                    <a href="{{ route('contact') }}" wire:navigate
+                    <a href="{{ LaravelLocalization::localizeUrl(route('contact')) }}" wire:navigate
                         class="text-sm font-mono {{ request()->routeIs('contact') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
-                        Contato
+                        {{ __('messages.contact') }}
                     </a>
+
+                    <!-- Language Switcher -->
+                    <div class="flex items-center gap-2 ml-2 pl-2 border-l border-zinc-700">
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                                class="text-sm font-mono px-2 py-1 rounded {{ app()->getLocale() === $localeCode ? 'bg-purple-500 text-white' : 'text-zinc-400 hover:text-purple-400 hover:bg-zinc-800' }} transition-colors"
+                                title="{{ $properties['native'] }}">
+                                {{ strtoupper($localeCode) === 'PT-BR' ? 'PT' : strtoupper($localeCode) }}
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

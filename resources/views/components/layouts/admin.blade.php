@@ -19,28 +19,39 @@
 
                     <!-- Admin Nav Links -->
                     <div class="flex items-center gap-6">
-                        <a href="{{ route('admin.posts.index') }}" wire:navigate
+                        <a href="{{ LaravelLocalization::localizeUrl(route('admin.posts.index')) }}" wire:navigate
                             class="text-sm font-mono {{ request()->routeIs('admin.posts.*') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
-                            Posts
+                            {{ __('messages.posts') }}
                         </a>
-                        <a href="{{ route('admin.tags.index') }}" wire:navigate
+                        <a href="{{ LaravelLocalization::localizeUrl(route('admin.tags.index')) }}" wire:navigate
                             class="text-sm font-mono {{ request()->routeIs('admin.tags.*') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
-                            Tags
+                            {{ __('messages.tags') }}
                         </a>
                     </div>
                 </div>
 
                 <!-- Right Side -->
                 <div class="flex items-center gap-6">
-                    <a href="{{ route('home') }}" wire:navigate
+                    <!-- Language Switcher -->
+                    <div class="flex items-center gap-2">
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                                class="text-sm font-mono px-2 py-1 rounded {{ app()->getLocale() === $localeCode ? 'bg-purple-500 text-white' : 'text-zinc-400 hover:text-purple-400 hover:bg-zinc-800' }} transition-colors"
+                                title="{{ $properties['native'] }}">
+                                {{ strtoupper($localeCode) === 'PT-BR' ? 'PT' : strtoupper($localeCode) }}
+                            </a>
+                        @endforeach
+                    </div>
+
+                    <a href="{{ LaravelLocalization::localizeUrl(route('home')) }}" wire:navigate
                         class="text-sm font-mono text-zinc-400 hover:text-purple-400 transition-colors">
-                        Ver Site
+                        {{ __('messages.view_site') }}
                     </a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit"
                             class="text-sm font-mono text-zinc-400 hover:text-red-400 transition-colors">
-                            Sair
+                            {{ __('messages.logout') }}
                         </button>
                     </form>
                 </div>
