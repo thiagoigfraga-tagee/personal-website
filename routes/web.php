@@ -14,11 +14,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         ]);
     })->name('home');
 
-    // Contact Route - Traduzido por idioma
-    $contactRoute = app()->getLocale() === 'en' ? '/contact' : '/contato';
-    Route::get($contactRoute, function () {
+    // Contact Route
+    Route::get('/contact', function () {
         return view('contact');
     })->name('contact');
+
+    Route::get('/contato', function () {
+        return view('contact');
+    })->name('contact.pt');
 
     // Blog Routes
     Route::get('/blog', function () {

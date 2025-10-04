@@ -26,8 +26,8 @@
                         class="text-sm font-mono {{ request()->routeIs('blog.*') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
                         {{ __('messages.blog') }}
                     </a>
-                    <a href="{{ LaravelLocalization::localizeUrl(route('contact')) }}" wire:navigate
-                        class="text-sm font-mono {{ request()->routeIs('contact') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
+                    <a href="{{ LaravelLocalization::localizeUrl(app()->getLocale() === 'en' ? route('contact') : route('contact.pt')) }}" wire:navigate
+                        class="text-sm font-mono {{ request()->routeIs('contact*') ? 'text-purple-500 font-semibold' : 'text-zinc-400 hover:text-purple-400' }} transition-colors">
                         {{ __('messages.contact') }}
                     </a>
 

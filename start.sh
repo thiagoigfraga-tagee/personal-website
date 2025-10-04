@@ -2,9 +2,10 @@
 
 echo "🚀 Starting Laravel application..."
 
-# Limpa cache de configuração
-echo "📦 Clearing config cache..."
+# Limpa cache de configuração e rotas
+echo "📦 Clearing config and route cache..."
 php artisan config:clear
+php artisan route:clear
 
 # Roda as migrações
 echo "🗄️  Running migrations..."
