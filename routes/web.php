@@ -14,8 +14,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         ]);
     })->name('home');
 
-    // Contact Route
-    Route::get(LaravelLocalization::transRoute('routes.contact'), function () {
+    // Contact Route - Traduzido por idioma
+    $contactRoute = app()->getLocale() === 'en' ? '/contact' : '/contato';
+    Route::get($contactRoute, function () {
         return view('contact');
     })->name('contact');
 
