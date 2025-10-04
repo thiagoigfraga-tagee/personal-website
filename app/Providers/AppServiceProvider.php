@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
+use Livewire\Livewire;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
         $locale = app()->getLocale();
         $carbonLocale = $locale === 'pt' ? 'pt_BR' : 'en';
         Carbon::setLocale($carbonLocale);
+
     }
 }

@@ -13,7 +13,7 @@
                         class="w-32 h-32 rounded-2xl border-2 border-zinc-700 object-cover">
                     --}}
 
-                    <div>
+                    <div class="w-full">
                         <h1 class="text-4xl lg:text-5xl font-bold mb-3 text-white">
                             Thiago Isaac Garcia Fraga
                         </h1>

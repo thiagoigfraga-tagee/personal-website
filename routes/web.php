@@ -15,7 +15,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     })->name('home');
 
     // Contact Route
-    Route::get('/contato', function () {
+    Route::get(LaravelLocalization::transRoute('routes.contact'), function () {
         return view('contact');
     })->name('contact');
 

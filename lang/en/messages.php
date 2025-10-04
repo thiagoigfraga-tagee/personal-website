@@ -196,4 +196,7 @@ return [
     // Other
     'published' => 'Published',
     'view_site' => 'View Site',
+
+    // Alert
+    'alert_message' => 'English language added recently!',
 ];

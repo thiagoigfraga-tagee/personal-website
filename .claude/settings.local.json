@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(php artisan:*)"
+      "Bash(php artisan:*)",
+      "Bash(gh repo list:*)",
+      "Bash(composer show:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
