@@ -30,9 +30,19 @@
 
             <!-- About Section -->
             <section class="mb-20 ">
-                <h2 class="text-2xl font-bold mb-6 text-zinc-300 font-mono">
-                    <span class="text-purple-500">//</span> {{ __('messages.about_me') }}
-                </h2>
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-zinc-300 font-mono">
+                        <span class="text-purple-500">//</span> {{ __('messages.about_me') }}
+                    </h2>
+                    <a href="{{ app()->getLocale() === 'en' ? '/Resume_Thiago_2025.pdf' : '/Curriculum_Thiago_2025.pdf' }}"
+                       target="_blank"
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-mono text-sm font-semibold transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                        {{ app()->getLocale() === 'en' ? 'Access Resume' : 'Acessar Currículo' }}
+                    </a>
+                </div>
                 <div class="border-l-2 border-purple-500 pl-6">
                     <p class="text-lg  leading-relaxed ">
                         {!! __('messages.about_p1') !!}
