@@ -22,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // Aplicar middleware de localização no grupo web
         $middleware->web(append: [
+            \App\Http\Middleware\SetLocaleForLivewire::class,
             \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
             \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
         ]);
