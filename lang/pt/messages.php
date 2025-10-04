@@ -187,7 +187,12 @@ return [
     'skills_frontend' => 'Frontend & Estilo',
     'skills_database' => 'Banco de Dados & Ferramentas',
     'skills_specializations' => 'Especializações',
-    
+
+    // Specializations
+    'spec_uxui' => 'UX/UI Design',
+    'spec_webdesign' => 'Web Design',
+    'spec_computational_math' => 'Matemática Computacional',
+
     // Other
     'published' => 'Publicado',
     'view_site' => 'Ver Site',

@@ -19,6 +19,12 @@ return Application::configure(basePath: dirname(__DIR__))
             'localeCookieRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
             'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
         ]);
+
+        // Aplicar middleware de localização no grupo web
+        $middleware->web(append: [
+            \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+            \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

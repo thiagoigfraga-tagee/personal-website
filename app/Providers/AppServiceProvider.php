@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Configura locale do Carbon baseado no idioma da aplicação
         $locale = app()->getLocale();
-        $carbonLocale = $locale === 'pt-BR' ? 'pt_BR' : 'en';
+        $carbonLocale = $locale === 'pt' ? 'pt_BR' : 'en';
         Carbon::setLocale($carbonLocale);
     }
 }

@@ -193,10 +193,10 @@
                     <div>
                         <h3 class="text-sm font-semibold text-white mb-3 font-mono">{{ __('messages.skills_specializations') }}</h3>
                         <div class="flex flex-wrap gap-2">
-                            @foreach (['UX/UI Design', 'Web Design', 'Matemática Computacional'] as $skill)
+                            @foreach (['spec_uxui', 'spec_webdesign', 'spec_computational_math'] as $skill)
                                 <span
                                     class="px-3 py-1.5 bg-zinc-800 border border-zinc-700 rounded text-blue-500 font-mono text-sm hover:border-blue-500 transition-colors">
-                                    {{ $skill }}
+                                    {{ __('messages.' . $skill) }}
                                 </span>
                             @endforeach
                         </div>
