@@ -50,10 +50,11 @@
                 @endif
 
                 <!-- Post Content -->
-                <div class="prose prose-invert prose-zinc max-w-none">
-                    <div class="text-zinc-300 leading-relaxed space-y-4">
-                        {!! nl2br(e($post->content)) !!}
-                    </div>
+                <div class="markdown-content">
+                    {!! Str::markdown($post->content, [
+                        'html_input' => 'strip',
+                        'allow_unsafe_links' => false,
+                    ]) !!}
                 </div>
 
                 <!-- Share Section -->

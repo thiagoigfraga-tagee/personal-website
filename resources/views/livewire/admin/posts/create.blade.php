@@ -124,13 +124,43 @@ new class extends Component {
                     <label for="content" class="block text-sm font-semibold text-zinc-300 mb-2">
                         Conteúdo *
                     </label>
-                    <textarea id="content" wire:model="content" rows="15"
-                        class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-purple-500 font-mono resize-none"
-                        placeholder="Escreva o conteúdo completo do post..."></textarea>
+                    <div wire:ignore>
+                        <textarea id="content" x-data="{
+                            editor: null,
+                            init() {
+                                const initEditor = () => {
+                                    if (window.EasyMDE) {
+                                        this.editor = new EasyMDE({
+                                            element: this.$el,
+                                            spellChecker: false,
+                                            placeholder: 'Escreva o conteúdo completo do post...',
+                                            status: false,
+                                            toolbar: [
+                                                'bold', 'italic', 'heading', '|',
+                                                'quote', 'unordered-list', 'ordered-list', '|',
+                                                'link', 'image', '|',
+                                                'preview', 'side-by-side', 'fullscreen', '|',
+                                                'guide'
+                                            ]
+                                        });
+                        
+                                        this.editor.codemirror.on('change', () => {
+                                            @this.set('content', this.editor.value());
+                                        });
+                        
+                                    } else {
+                                        setTimeout(initEditor, 100);
+                                    }
+                                };
+                        
+                                this.$nextTick(initEditor);
+                            }
+                        }"></textarea>
+                    </div>
                     @error('content')
                         <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
                     @enderror
-                    <p class="mt-1 text-xs text-zinc-500 font-mono">Você pode usar Markdown</p>
+
                 </div>
 
                 <!-- Tags -->

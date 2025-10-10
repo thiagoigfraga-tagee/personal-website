@@ -55,6 +55,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         return view('blog.index', compact('posts', 'tag'));
     })->name('blog.tag');
 
+    // Auth Routes
+    Route::middleware('guest')->group(function () {
+        Route::view('login', 'auth.login')
+            ->name('login');
+    });
+
+    Route::post('logout', function () {
+        \Illuminate\Support\Facades\Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/');
+    })->middleware('auth')->name('logout');
+
     Route::middleware(['auth'])->group(function () {
         // Admin/Editor Routes
         Route::prefix('admin')->name('admin.')->group(function () {
@@ -88,5 +101,3 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
         });
     });
 });
-
-require __DIR__.'/auth.php';

@@ -32,4 +32,8 @@ database/database.sqlite
 # Logs e caches
 storage/logs/*.log
 bootstrap/cache/*.php
-.claude/settings.local.json
+*claude/*
+CLAUDE.md
+.mcp.json
+boost.json
+.github/copilot-instructions.md
